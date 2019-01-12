@@ -1,0 +1,39 @@
+<html>
+<head>
+<script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.0.0/stitch.js"></script>
+<script>
+const {
+    Stitch,
+    UserPasswordAuthProviderClient
+  } = stitch;
+  const APP_ID = "YOUR APP_ID FROM MONGODB STITCH";
+  const stitchClient = Stitch.initializeDefaultAppClient(APP_ID);
+
+  const emailPasswordClient = stitchClient.auth
+    .getProviderClient(UserPasswordAuthProviderClient.factory, "userpass");
+
+  const params = new URLSearchParams(window.location.search);
+  const token = params.get('token');
+  const tokenId = params.get('tokenId');
+
+  emailPasswordClient
+    .confirmUser(token, tokenId)
+    .then(() => displayResult('success'))
+    .catch(err => displayResult('error', err))
+
+  function displayResult(result, err) {
+    const message = document.getElementById("message");
+    if (result === "success") {
+      message.innerText = "Your E-mail address has been verified.\n\n You may close this page. Thank you.";
+    }
+    else if (result === "error") {
+      message.innerText = "Unable to register this user. Please try again to register." + err;
+    }
+  }
+</script>
+<title>Airved: E-mail Confirmation</title>
+</head>
+<body>
+<div id="message"></div>
+</body>
+</html>

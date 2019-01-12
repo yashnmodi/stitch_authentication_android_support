@@ -1,0 +1,39 @@
+<html>
+<head>
+  <script src="https://s3.amazonaws.com/stitch-sdks/js/bundles/4.0.0/stitch.js"></script>
+<script>
+  // Parse the URL query parameters
+function resetPwd(){
+	
+const {
+    Stitch,
+    UserPasswordAuthProviderClient
+  } = stitch;
+  const APP_ID = "YOUR APP_ID FROM MONGODB STITCH";
+  const stitchClient = Stitch.initializeDefaultAppClient(APP_ID);
+
+  const emailPasswordClient = stitchClient.auth
+    .getProviderClient(UserPasswordAuthProviderClient.factory, "userpass");
+
+  const params = new URLSearchParams(window.location.search);
+  const token = params.get('token');
+  const tokenId = params.get('tokenId');
+  const newPassword = document.getElementById("newpwd");
+
+emailPasswordClient.resetPassword(token, tokenId, newPassword).then(() => {
+  console.log("Successfully reset password!");
+  document.getElementById("message").innerText = "Successfully reset password!\nYou may close this page. Thank you.";
+}).catch(err => {
+  console.log("Error resetting password:", err);
+  document.getElementById("message").innerText = "Error in resetting password.\nPlease try again.";
+}); 
+}
+</script>
+<title>Airved: Reset password</title>
+</head>
+<body>
+	<input type="text" placeholder="New password" id="newpwd">
+	<button onclick="resetPwd()">Submit</button>
+	<div id="message"></div>
+</body>
+</html>

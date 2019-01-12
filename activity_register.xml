@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    tools:context=".RegisterUser">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100sp"
+        android:textSize="50sp"
+        android:text="@string/app_name"
+        />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_marginTop="20sp"
+        android:inputType="text"
+        android:hint="Your Name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="270sp" />
+
+    <EditText
+        android:id="@+id/newuser"
+        android:layout_marginTop="20sp"
+        android:inputType="textEmailAddress"
+        android:hint="Username/Email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="270sp" />
+
+    <EditText
+        android:id="@+id/newpassword"
+        android:layout_marginTop="20sp"
+        android:hint="New Password"
+        android:inputType="textPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="270sp"/>
+
+    <EditText
+        android:id="@+id/conpassword"
+        android:layout_marginTop="20sp"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="270sp"/>
+
+    <Button
+        android:id="@+id/registerbtn"
+        android:layout_marginTop="30sp"
+        style="@style/CustomBtn"
+        android:text="Register"
+        />
+
+    <TextView
+        android:id="@+id/loginlink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Already a member? Login"
+        android:layout_marginTop="20sp"
+        android:textSize="15sp"
+        />
+
+</LinearLayout>
