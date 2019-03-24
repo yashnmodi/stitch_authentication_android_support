@@ -18,7 +18,7 @@ const {
   const params = new URLSearchParams(window.location.search);
   const token = params.get('token');
   const tokenId = params.get('tokenId');
-  const newPassword = document.getElementById("newpwd");
+  const newPassword = document.getElementById("newpwd").value;
 
 emailPasswordClient.resetPassword(token, tokenId, newPassword).then(() => {
   console.log("Successfully reset password!");
